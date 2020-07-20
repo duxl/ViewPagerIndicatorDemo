@@ -19,16 +19,16 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 单独使用Indicator
+ * 单独使用Indicator（平分空间）
  * create by duxl 2020/7/20
  */
 public class Demo1Activity extends BaseActivity {
 
-    private int text_selectColor = Color.parseColor("#64A2FF");
-    private int text_unSelectColor = Color.parseColor("#BEBEBE");
-    private int indicator_color = text_selectColor;
+    protected int text_selectColor = Color.parseColor("#64A2FF");
+    protected int text_unSelectColor = Color.parseColor("#BEBEBE");
+    protected int indicator_color = text_selectColor;
 
-    private List<String> mItems = DataUtil.getItemsB();
+    protected List<String> mItems;
 
 
     @BindView(R.id.indicator)
@@ -39,13 +39,19 @@ public class Demo1Activity extends BaseActivity {
         return R.layout.indicator_layout;
     }
 
+    protected List<String> getData() {
+        return DataUtil.getItemsB();
+    }
+
     @Override
     public void initView() {
+        mItems = getData();
+
         ColorBar colorBar = new ColorBar(this, indicator_color, DisplayUtil.dip2px(this, 3));
         colorBar.setWidth(DisplayUtil.dip2px(this, 26));
         mIndicatorView.setScrollBar(colorBar);
-        mIndicatorView.setSplitAuto(true);
-        mIndicatorView.setOnTransitionListener(new OnTransitionTextListener().setColor(text_selectColor, text_unSelectColor).setSize(14, 14));
+        mIndicatorView.setSplitAuto(getSplitAuto());
+        mIndicatorView.setOnTransitionListener(getOnTransitionTextListener());
         mIndicatorView.setAdapter(new InnerIndicatorAdapter(this));
         mIndicatorView.setItemClickable(true);
         mIndicatorView.setOnItemSelectListener(new Indicator.OnItemSelectedListener() {
@@ -54,6 +60,19 @@ public class Demo1Activity extends BaseActivity {
                 showToast(mItems.get(position));
             }
         });
+    }
+
+    /**
+     * 是否平均分配宽度空间
+     *
+     * @return
+     */
+    protected boolean getSplitAuto() {
+        return true;
+    }
+
+    protected OnTransitionTextListener getOnTransitionTextListener() {
+        return new OnTransitionTextListener().setColor(text_selectColor, text_unSelectColor).setSize(14, 14);
     }
 
     private class InnerIndicatorAdapter extends Indicator.IndicatorAdapter {

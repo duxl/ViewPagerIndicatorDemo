@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Demo2
+ * 和ViewPager配合使用
  * create by duxl 2020/7/20
  */
 public class Demo2Activity extends BaseActivity {
@@ -33,9 +33,9 @@ public class Demo2Activity extends BaseActivity {
     @BindView(R.id.viewPager)
     ViewPager mViewPager;
 
-    private IndicatorViewPager mIndicatorViewPager;
+    protected IndicatorViewPager mIndicatorViewPager;
 
-    private List<String> mItems = DataUtil.getItemsA();
+    protected List<String> mItems = DataUtil.getItemsA();
 
     @Override
     public int getLayoutResId() {
@@ -44,28 +44,17 @@ public class Demo2Activity extends BaseActivity {
 
     @Override
     public void initView() {
-        mIndicatorView.setBackgroundColor(Color.parseColor("#234577"));
+        initIndicatorViewPager();
         initTab();
         showTab();
     }
 
-    private void showTab() {
-        String[] tabs = new String[mItems.size()];
-        List<Fragment> fragments = new ArrayList();
-        for (int i = 0; i < mItems.size(); i++) {
-            tabs[i] = mItems.get(i);
-            if (i == 3) {
-                fragments.add(SimpleFragment.newInstance(mItems.get(i)));
-            } else {
-                fragments.add(RecyclerFragment.newInstance(mItems.get(i)));
-            }
-        }
-
-        PageIndicatorAdapter pageIndicatorAdapter = new PageIndicatorAdapter(getSupportFragmentManager(), this, fragments, tabs);
-        mIndicatorViewPager.setAdapter(pageIndicatorAdapter);
+    protected void initIndicatorViewPager() {
+        mIndicatorViewPager = new IndicatorViewPager(mIndicatorView, mViewPager);
     }
 
-    private void initTab() {
+    protected void initTab() {
+        mIndicatorView.setBackgroundColor(Color.parseColor("#234577"));
         mIndicatorViewPager = new IndicatorViewPager(mIndicatorView, mViewPager);
         mIndicatorView.setOnTransitionListener(new OnTransitionTextListener() {
             @Override
@@ -80,5 +69,21 @@ public class Demo2Activity extends BaseActivity {
                 .setColor(ContextCompat.getColor(this, R.color.text_selectColor),
                         ContextCompat.getColor(this, R.color.text_unSelectColor))
                 .setSize(18, 15));
+    }
+
+    protected void showTab() {
+        String[] tabs = new String[mItems.size()];
+        List<Fragment> fragments = new ArrayList();
+        for (int i = 0; i < mItems.size(); i++) {
+            tabs[i] = mItems.get(i);
+            if (i == 3) {
+                fragments.add(SimpleFragment.newInstance(mItems.get(i)));
+            } else {
+                fragments.add(RecyclerFragment.newInstance(mItems.get(i)));
+            }
+        }
+
+        PageIndicatorAdapter pageIndicatorAdapter = new PageIndicatorAdapter(getSupportFragmentManager(), this, fragments, tabs);
+        mIndicatorViewPager.setAdapter(pageIndicatorAdapter);
     }
 }

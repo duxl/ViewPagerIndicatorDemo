@@ -30,4 +30,11 @@ public class DataUtil {
         return items;
     }
 
+    public static List<String> getItemC() {
+        List<String> items = new ArrayList<>();
+        items.add("正式环境");
+        items.add("测试环境");
+        return items;
+    }
+
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <com.shizhefei.view.indicator.ScrollIndicatorView
@@ -9,5 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#FAFAFA" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="点击上面的tab看看"/>
 
 </LinearLayout>
