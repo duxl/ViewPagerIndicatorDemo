@@ -17,57 +17,73 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo1Activity"
+        <activity
+            android:name=".Demo1Activity"
             android:label="单独使用Indicator（tab平分空间）">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo1_1Activity"
+        <activity
+            android:name=".Demo1_1Activity"
             android:label="单独使用Indicator（tab左对齐）">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo1_2Activity"
+        <activity
+            android:name=".Demo1_2Activity"
             android:label="单独使用Indicator（tab居中对齐）">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo2Activity"
+        <activity
+            android:name=".Demo2Activity"
             android:label="和ViewPager配合使用">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo3Activity"
+        <activity
+            android:name=".Demo3Activity"
             android:label="背景色样式">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo4Activity"
+        <activity
+            android:name=".Demo4Activity"
             android:label="下划线样式（等于tab宽度）">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo5Activity"
+        <activity
+            android:name=".Demo5Activity"
             android:label="下划线样式（固定tab宽度）">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Demo6Activity"
+        <activity
+            android:name=".Demo6Activity"
             android:label="下划线样式（等于文字宽度）">
+            <intent-filter>
+                <action android:name="com.duxl.viewpagerindicator.demo.Action" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Demo7Activity"
+            android:label="完全自定义效果">
             <intent-filter>
                 <action android:name="com.duxl.viewpagerindicator.demo.Action" />
             </intent-filter>
